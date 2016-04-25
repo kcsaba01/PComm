@@ -25,7 +25,7 @@ if(isset($_POST["submit"]))
     }
     else
     {
-        $resultText = $searchID + "no user with that username";
+        $resultText = "no user with that username";
 
     }
 }
