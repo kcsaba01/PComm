@@ -3,16 +3,12 @@ session_start();
 include("connection.php"); //Establishing connection with our database
 include("utilities.php");
 $msg = ""; //Variable for storing our errors.
-$mysqli = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-if ($mysqli->connect_errno)
-{
-    echo("Failed to connect to MySQL");
-}
+
 if (!($addcomm=$mysqli->prepare("INSERT INTO comments (description, postDate,userID, photoID) VALUES (?,NOW(),?,?)")))
 {
     echo("Prepare failed: (" . $mysqli ->errno . ") " . $mysqli->error);
 }
-if(!$addcomm->bind_param("addcomm", $desc,$id,$photoID))
+if(!($addcomm->bind_param("addcomm", $desc,$id,$photoID)))
 {
     echo("Binding parameters failed " . $addcomm->errno . " " . $addcomm->error . "***");
     echo($desc. " " . $id . " " . $photoID);
