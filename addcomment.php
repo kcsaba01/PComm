@@ -32,7 +32,6 @@ if(isset($_POST["submit"]))
         $msg = "You need to login first";
     }
 }
-$addcomment = $conn->prepare("INSERT INTO comments (description, postDate, userID, photoID) VALUES (?,NOW(), ?, ?)");
 $addcomment->bind_param("sss", $desc, $id,$photoID);
 $addcomment->execute();
 ?>
