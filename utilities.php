@@ -19,4 +19,8 @@ function xecho($data) //function to clear output
 }
 
 //SQL Prepared statements
+if (!($addcomm=$mysqli->prepare("INSERT INTO comments (description, postDate,userID, photoID) VALUES (?,NOW(),?,?)")))
+{
+    echo("Prepare failed: (" . $mysqli ->errno . ") " . $mysqli->error);
+}
 ?>

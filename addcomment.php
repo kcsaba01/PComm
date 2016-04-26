@@ -4,15 +4,8 @@ include("connection.php"); //Establishing connection with our database
 include("utilities.php");
 $msg = ""; //Variable for storing our errors.
 
-if (!($addcomm=$mysqli->prepare("INSERT INTO comments (description, postDate,userID, photoID) VALUES (?,NOW(),?,?)")))
-{
-    echo("Prepare failed: (" . $mysqli ->errno . ") " . $mysqli->error);
-}
-if(!($addcomm->bind_param("addcomm", $desc,$id,$photoID)))
-{
-    echo("Binding parameters failed " . $addcomm->errno . " " . $addcomm->error . "***");
-    echo($desc. " " . $id . " " . $photoID);
-}
+
+
 if(isset($_POST["submit"]))
 {
     $desc = $_POST["desc"];
@@ -30,7 +23,12 @@ if(isset($_POST["submit"]))
         //$addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
         //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
 
-        if (!$addcomm ->execute())
+        if(!($addcomm->bind_param("addcomm", $desc,$id,$photoID)))
+        {
+            echo("Binding parameters failed " . $addcomm->errno . " " . $addcomm->error . "***");
+            echo($desc. " " . $id . " " . $photoID);
+        }
+        if (!($addcomm ->execute()))
         {
             echo("Execute failed" . $addcomm->errno . " " . $addcomm->error);
         }
