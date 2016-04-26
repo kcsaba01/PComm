@@ -36,7 +36,7 @@ if(isset($_POST["submit"]))
         }
         */
         $data = $db->prepare("INSERT INTO comments (description, postDate,userID, photoID) VALUES (?,NOW(),?,?)");
-        $data->bind_param( ':id', $desc,$id, $photoID);
+        $data->bind_param( ':id', 'test123', 111, 171);
         $data->execute();
         //if ($query) {
         //    $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
