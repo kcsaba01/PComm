@@ -19,9 +19,10 @@ if(isset($_POST["submit"]))
         $id = $row['userID'];
         //$addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
         //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-        if(!$addcomm->bind_param($desc,now(),$photoID,$id))
+        $time1 = "now()";
+        if(!$addcomm->bind_param($desc,$time1,$photoID,$id))
         {
-            xecho "Binding parameters failed";
+            xecho("Binding parameters failed");
         }
         if (!$addcomm ->execute())
         {
