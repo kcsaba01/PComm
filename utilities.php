@@ -19,3 +19,4 @@ function xecho($data) //function to clear output
 }
 
 //SQL Prepared statements
+?>

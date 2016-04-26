@@ -7,7 +7,6 @@ if (!($addcomm=$mysqli->prepare("INSERT INTO comments (description, postDate,use
 {
     echo("Prepare failed: (" . $mysqli ->errno . ") " . $mysqli->error);
 }
-?>
 if(isset($_POST["submit"]))
 {
     $desc = $_POST["desc"];
