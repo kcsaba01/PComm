@@ -23,7 +23,9 @@ if(isset($_POST["submit"]))
         //$addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
         //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
 
-        if(!($addcomm->bind_param("addcomm", $desc,$id,$photoID)))
+        /*
+         *
+         if(!($addcomm->bind_param("addcomm", $desc,$id,$photoID)))
         {
             echo("Binding parameters failed " . $addcomm->errno . " " . $addcomm->error . "***");
             echo($desc. " " . $id . " " . $photoID);
@@ -32,9 +34,13 @@ if(isset($_POST["submit"]))
         {
             echo("Execute failed" . $addcomm->errno . " " . $addcomm->error);
         }
-        if ($query) {
-            $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
-        }
+        */
+        $data = $db->prepare("INSERT INTO comments (description, postDate,userID, photoID) VALUES (?,NOW(),?,?)");
+        $data->bind_param( ':id', $desc,$id, $photoID);
+        $data->execute();
+        //if ($query) {
+        //    $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
+        //}
     }
     else{
         $msg = "You need to login first";
