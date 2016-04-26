@@ -3,6 +3,11 @@ session_start();
 include("connection.php"); //Establishing connection with our database
 include("utilities.php");
 $msg = ""; //Variable for storing our errors.
+if (!($addcomm=$mysqli->prepare("INSERT INTO comments (description, postDate,userID, photoID) VALUES (?,NOW(),?,?)")))
+{
+    echo("Prepare failed: (" . $mysqli ->errno . ") " . $mysqli->error);
+}
+?>
 if(isset($_POST["submit"]))
 {
     $desc = $_POST["desc"];
