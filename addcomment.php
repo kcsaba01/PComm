@@ -7,6 +7,11 @@ if (!($addcomm=$mysqli->prepare("INSERT INTO comments (description, postDate,use
 {
     echo("Prepare failed: (" . $mysqli ->errno . ") " . $mysqli->error);
 }
+if(!$addcomm->bind_param("addcomm", $desc,$id,$photoID))
+{
+    echo("Binding parameters failed " . $addcomm->errno . " " . $addcomm->error . "***");
+    echo($desc. " " . $id . " " . $photoID);
+}
 if(isset($_POST["submit"]))
 {
     $desc = $_POST["desc"];
@@ -23,11 +28,7 @@ if(isset($_POST["submit"]))
         $id = $row['userID'];
         //$addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
         //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-        if(!$addcomm->bind_param("addcomm", $desc,$id,$photoID))
-        {
-            echo("Binding parameters failed " . $addcomm->errno . " " . $addcomm->error . "***");
-            echo($desc. " " . $id . " " . $photoID);
-        }
+
         if (!$addcomm ->execute())
         {
             echo("Execute failed" . $addcomm->errno . " " . $addcomm->error);
