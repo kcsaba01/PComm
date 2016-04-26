@@ -1,11 +1,10 @@
 <?php
 session_start();
 include("connection.php"); //Establishing connection with our database
-
+include("utilities.php");
 $msg = ""; //Variable for storing our errors.
 if(isset($_POST["submit"]))
 {
-
     $desc = $_POST["desc"];
     $photoID = $_POST["photoID"];
     $desc = mysqli_real_escape_string($db, $desc);
@@ -18,8 +17,16 @@ if(isset($_POST["submit"]))
     if(mysqli_num_rows($result) == 1) {
         //echo $name." ".$email." ".$password;
         $id = $row['userID'];
-        $addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
-        $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+        //$addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
+        //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+        if(!$addcomm->bind_param($desc,now(),$photoID,$id))
+        {
+            xecho "Binding parameters failed";
+        }
+        if (!$addcomm ->execute())
+        {
+            xecho("Execute failed");
+        }
         if ($query) {
             $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
         }
