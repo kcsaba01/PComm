@@ -30,7 +30,7 @@
 				header("location: photos.php"); // Redirecting To Other Page
 			}else
 			{
-				$error = "Incorrect username or password.";
+				$error = $sql;
 			}
 
 		}
