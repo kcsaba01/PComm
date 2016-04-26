@@ -22,7 +22,7 @@ if(isset($_POST["submit"]))
         $time1 = "now()";
         if(!$addcomm->bind_param($desc,$time1,$photoID,$id))
         {
-            xecho("Binding parameters failed");
+            xecho("Binding parameters failed " . $addcomm->errno . " " . $addcomm->error);
         }
         if (!$addcomm ->execute())
         {
