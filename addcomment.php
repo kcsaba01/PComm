@@ -21,11 +21,11 @@ if(isset($_POST["submit"]))
         //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
         if(!$addcomm->bind_param($desc,$photoID,$id))
         {
-            xecho("Binding parameters failed " . $addcomm->errno . " " . $addcomm->error);
+            echo("Binding parameters failed " . $addcomm->errno . " " . $addcomm->error);
         }
         if (!$addcomm ->execute())
         {
-            xecho("Execute failed");
+            echo("Execute failed");
         }
         if ($query) {
             $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
