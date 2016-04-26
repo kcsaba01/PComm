@@ -8,6 +8,8 @@ if(isset($_POST["submit"]))
 
     $desc = $_POST["desc"];
     $photoID = $_POST["photoID"];
+    $desc = mysqli_real_escape_string($db, $desc);
+    $photoID = mysqli_real_escape_string($db, $photoID);
     $name = $_SESSION["username"];
 
     $sql="SELECT userID FROM users WHERE username='$name'";
