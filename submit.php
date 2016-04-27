@@ -20,7 +20,7 @@ if(isset($_POST["submit"]))
         }
         else
         {
-            $msg ="Not";
+            $msg =mysqli_stmt_error($stmt);
         }
         mysqli_stmt_close($stmt);
     }
