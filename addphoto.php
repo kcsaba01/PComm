@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("connection.php"); //Establishing connection with our database
-
+include("utilities.php"); //contains the prepared statements
 $msg = ""; //Variable for storing our errors.
 if(isset($_POST["submit"]))
 {
