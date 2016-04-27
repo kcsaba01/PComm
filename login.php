@@ -30,7 +30,7 @@
 					{
 						$_SESSION['username'] = $username; // Initializing Session
 						//If login was successful the attempt field is changed to 1
-						//$query = mysqli_query($db, "UPDATE users SET attempt=1 WHERE username='$username'") or die(mysqli_error($db));
+						$query = mysqli_query($db, "UPDATE users SET attempt=1 WHERE username='$username'") or die(mysqli_error($db));
 						header("location: photos.php"); // Redirecting To Other Page
 					}else
 					{
