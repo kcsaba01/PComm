@@ -37,4 +37,6 @@ else
 {
     $msg = "Comment added successfully";
 }
+$addcomment->close();
+$conn->close();
 ?>
