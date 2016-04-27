@@ -27,7 +27,7 @@
 				{
 					mysqli_stmt_bind_result($stmt, $result);
 					mysqli_stmt_fetch($stmt);
-					$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1 WHERE username='?'");
+					$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1 WHERE username=?");
 					if(($result < 4) and ($result>0)) //checking whether the user exist and there were less than 4 login attempts
 					{
 						//$_SESSION['username'] = $username; // Initializing Session
