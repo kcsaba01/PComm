@@ -13,7 +13,7 @@ if(isset($_POST["submit"]))
     $attempt=1;
     if ($stmt = mysqli_prepare($db,"INSERT INTO users (username, password, email, admin, attempt) VALUES (?, ?, ?, ?, ?)" ))
     {
-        mysqli_stmt_bind_param($stmt, "s", $name, $password, $email, $admin, $attempt);
+        mysqli_stmt_bind_param($stmt, "sssii", $name, $password, $email, $admin, $attempt);
         if (mysqli_stmt_execute($stmt))
         {
             $msg="Success";
