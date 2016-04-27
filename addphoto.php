@@ -19,14 +19,14 @@ if(isset($_POST["submit"]))
     $uploadOk = 1;
 
     $sql="SELECT userID FROM users WHERE username='$name'";
-    $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
-    if(mysqli_num_rows($result) == 1) {
+    $result = $conn->query($sql);
+    if ($result->num_rows = 1)
+    {
         $id = $row['userID'];
-    }
-    else{
+    } else {
         $msg = "You need to login first";
     }
+
 }
 //Binding the parameter, the statement is contained in utilities.php
 if(!($insertphotos->bind_param("ssst",$title,$desc,$target_file,$id)))
