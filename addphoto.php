@@ -3,9 +3,9 @@ session_start();
 include("connection.php"); //Establishing connection with our database
 include("utilities.php"); //contains the prepared statements
 $msg = ""; //Variable for storing our errors.
-$title=" ";
-$desc=" ";
-$target_file=" ";
+$title="title1";
+$desc="desc1";
+$target_file="targetfile1";
 $id=1;
 if(isset($_POST["submit"]))
 {
