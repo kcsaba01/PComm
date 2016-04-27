@@ -35,7 +35,7 @@
 						mysqli_stmt_bind_param($stmt2, "is", $resetattempt,$username); //Binding the variables
 						if (!mysqli_stmt_execute($stmt2))
 						{
-							printf("error");
+							echo("error");
 						};
 						//header("location: photos.php"); // Redirecting To Other Page
 					}else
