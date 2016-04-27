@@ -9,7 +9,7 @@ if(isset($_POST["submit"]))
     $desc = $_POST["desc"];
     $url = "test";
     $name = $_SESSION["username"];
-
+    $desc = mysqli_real_escape_string($db, $desc);
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
