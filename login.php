@@ -37,7 +37,7 @@
 						{
 							printf("error");
 						};
-						header("location: photos.php"); // Redirecting To Other Page
+						//header("location: photos.php"); // Redirecting To Other Page
 					}else
 					{
 						$error = "Incorrect username/password or the acount is blocked";
