@@ -24,19 +24,29 @@ if(isset($_POST["submit"]))
     if(mysqli_num_rows($result) == 1) {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $id = $row['userID'];
-            $addsql = "INSERT INTO photos (title, description, postDate, url, userID) VALUES ('$title','$desc',now(),'$target_file','$id')";
-            $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-            if ($query) {
-                $msg = "Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded. click <a href='photos.php'>here</a> to go back";
+
+            if ($stmt = mysqli_prepare($db,"INSERT INTO photos (title, description, postDate, url, userID) VALUES (?, ?, NOW(), ?, ?)")) //Preparing the statement
+            {
+                mysqli_stmt_bind_param($stmt, "sssi", $title, $desc, $target_file, $id); //Binding the variables
+                if (mysqli_stmt_execute($stmt))
+                {
+                    $msg="Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded. click <a href='photos.php'>here</a> to go back";
+                }
+                else
+                {
+                    $msg =mysqli_stmt_error($stmt) . ". There was an error uploading your file."; //Displaying the reason why the adding has failed
+                }
+                mysqli_stmt_close($stmt); //closing the statement
             }
 
-        } else {
-           $msg = "Sorry, there was an error uploading your file.";
-       }
+
+        }
+
     }
     else{
         $msg = "You need to login first";
     }
+    mysqli_close($db); //closing the connection
 }
 
 ?>
