@@ -14,7 +14,7 @@ if(isset($_POST["submit"])) {
     $uploadOk = 1;
 
     $sql = "SELECT userID FROM users WHERE username='$name'";
-    $result = $conn->query($sql);
+    $result = $db->query($sql);
     if ($result->num_rows = 1) {
         $id = $row['userID'];
     } else {
