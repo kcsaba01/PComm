@@ -30,9 +30,10 @@ if(isset($_POST["submit"])) {
         xecho("Execute has failed" . $addcomment->errno . " " . $addcomment->error);
     } else {
         $msg = "Comment added successfully";
+        $addcomment->close();
+        $conn->close();
     }
-    
+
 }
-$addcomment->close();
-$conn->close();
+
 ?>
