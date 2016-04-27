@@ -34,7 +34,7 @@
 						header("location: photos.php"); // Redirecting To Other Page
 					}else
 					{
-						$error = /*("Incorrect username/password or the acount is blocked" */ $result;
+						$error = "Incorrect username/password or the acount is blocked";
 						//If the login was unsuccessful the attempt field is incremented with 1
 						//$query = mysqli_query($db, "UPDATE users SET attempt=attempt+1 WHERE username='$username'") or die(mysqli_error($db));
 					}
