@@ -11,8 +11,6 @@ if(isset($_POST["submit"]))
 {
     $title = $_POST["title"];
     $desc = $_POST["desc"];
-    $title = mysqli_real_escape_string($db, $title);
-    $desc = mysqli_real_escape_string($db, $desc);
     $url = "test";
     $name = $_SESSION["username"];
     $target_dir = "uploads/";
