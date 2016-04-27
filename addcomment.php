@@ -19,7 +19,8 @@ if(isset($_POST["submit"])) {
     } else {
         $msg = "You need to login first";
     }
-
+//Prepared statement
+    $addcomment = $conn->prepare("INSERT INTO comments (description, postDate, userID, photoID) VALUES (?,NOW(), ?, ?)");
 //Binding the parameter, the statement is contained in utilities.php
     if (!($addcomment->bind_param("sss", $desc, $id, $photoID))) {
         xecho("Binding has failed" . $addcomment->errno . " " . $addcomment->error);
@@ -33,4 +34,5 @@ if(isset($_POST["submit"])) {
     
 }
 $addcomment->close();
+$conn->close();
 ?>
