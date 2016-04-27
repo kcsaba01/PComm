@@ -11,44 +11,20 @@ if(isset($_POST["submit"]))
     $password = $_POST["password"];
     $admin=0;
     $attempt=1;
-    if ($stmt = mysqli_prepare($db,"INSERT INTO users (username, password, email, admin, attempt) VALUES (?, ?, ?, ?, ?)" ))
+    
+    if ($stmt = mysqli_prepare($db,"INSERT INTO users (username, password, email, admin, attempt) VALUES (?, ?, ?, ?, ?)" )) //Preparing the statement
     {
-        mysqli_stmt_bind_param($stmt, "sssii", $name, $password, $email, $admin, $attempt);
+        mysqli_stmt_bind_param($stmt, "sssii", $name, $password, $email, $admin, $attempt); //Binding the variables
         if (mysqli_stmt_execute($stmt))
         {
             $msg="Thank You! you are now registered. click <a href='index.php'>here</a> to login";
         }
         else
         {
-            $msg =mysqli_stmt_error($stmt) . "Adding user failed";
+            $msg =mysqli_stmt_error($stmt) . " Adding user failed"; //Displaying the reason why the adding has failed
         }
-        mysqli_stmt_close($stmt);
+        mysqli_stmt_close($stmt); //closing the statement
     }
-    mysqli_close($db);
-    //checking for illegal characters
-    //$username = mysqli_real_escape_string($db, $username);
-    //$password = mysqli_real_escape_string($db, $password);
-    //$email = mysqli_real_escape_string($db, $email);
-
-    //storing the hash instead of the password
-    //$password = md5($password);
-
-    //Prepared statement
-    //$query= "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-    //$reguser = $conn->prepare($query);
-
-    //Binding the parameter
-    //if (!($reguser->bind_param("reguser", $name, $email, $password))) {
-     //   xecho("Binding has failed" . $reguser->errno . " " . $reguser->error);
-    //}
-
-    //Executing, error will be returned if the email already exists
-//    if (!$reguser->execute()) {
-  //      xecho ("Execute has failed" . $reguser->errno . " " . $reguser->error);
-    //} else {
-      //  $msg = "Thank You! you are now registered. click <a href='index.php'>here</a> to login";
-        //$reguser->close();
-        //$conn->close();
-    //}
+    mysqli_close($db); //closing the connection
 }
 ?>
