@@ -12,11 +12,14 @@ if(isset($_POST["submit"]))
     //checking for illegal characters
     $desc = mysqli_real_escape_string($db, $desc);
     $title = mysqli_real_escape_string($db, $title);
+    
+    //Setting the path
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     $uploadOk = 1;
 
+    //Finding the userID of the logged in user
     $sql="SELECT userID FROM users WHERE username='$name'";
     $result=mysqli_query($db,$sql);
     $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -24,7 +27,6 @@ if(isset($_POST["submit"]))
     if(mysqli_num_rows($result) == 1) {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $id = $row['userID'];
-
             if ($stmt = mysqli_prepare($db,"INSERT INTO photos (title, description, postDate, url, userID) VALUES (?, ?, NOW(), ?, ?)")) //Preparing the statement
             {
                 mysqli_stmt_bind_param($stmt, "sssi", $title, $desc, $target_file, $id); //Binding the variables

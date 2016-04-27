@@ -8,8 +8,4 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
-//$conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-//if ($conn->connect_error) {
-//    die("Connection failed: " . $conn->connect_error);
-//}
 ?>
