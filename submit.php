@@ -9,9 +9,11 @@ if(isset($_POST["submit"]))
     $name = $_POST["username"];
     $email = $_POST["email"]; //changed the database so it will need to be unique
     $password = $_POST["password"];
-    if ($stmt = mysqli_prepare($db,"INSERT INTO users (username, email, password) VALUES (?, ?, ?)" ))
+    $admin=0;
+    $attept=1;
+    if ($stmt = mysqli_prepare($db,"INSERT INTO users (username, email, password, admin, attempt) VALUES (?, ?, ?, ?, ?)" ))
     {
-        mysqli_stmt_bind_param($stmt, "s", $name, $email, $password);
+        mysqli_stmt_bind_param($stmt, "s", $name, $email, $password, $admin, $attempt);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
