@@ -24,7 +24,7 @@ if(isset($_POST["submit"])) {
 
     if ($stmt = mysqli_prepare($db,"INSERT INTO comments (description, postDate, userID, photoID) VALUES (?,NOW(), ?, ?)")) //Preparing the statement
     {
-        mysqli_stmt_bind_param($stmt, "ssi", $desc, $id, $photoID); //Binding the variables
+        mysqli_stmt_bind_param($stmt, "sii", $desc, $id, $photoID); //Binding the variables
         if (mysqli_stmt_execute($stmt))
         {
             $msg="Comment added successfully";
