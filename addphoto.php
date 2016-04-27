@@ -9,7 +9,9 @@ if(isset($_POST["submit"]))
     $desc = $_POST["desc"];
     $url = "test";
     $name = $_SESSION["username"];
+    //checking for illegal characters
     $desc = mysqli_real_escape_string($db, $desc);
+    $title = mysqli_real_escape_string($db, $title);
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -20,8 +22,6 @@ if(isset($_POST["submit"]))
     $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 
     if(mysqli_num_rows($result) == 1) {
-        //$timestamp = time();
-        //$target_file = $target_file.$timestamp;
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $id = $row['userID'];
             $addsql = "INSERT INTO photos (title, description, postDate, url, userID) VALUES ('$title','$desc',now(),'$target_file','$id')";
@@ -33,9 +33,6 @@ if(isset($_POST["submit"]))
         } else {
            $msg = "Sorry, there was an error uploading your file.";
        }
-        //echo $name." ".$email." ".$password;
-
-
     }
     else{
         $msg = "You need to login first";
