@@ -12,6 +12,7 @@
 		{
 			// Define $username and $password
 			$result=0;
+			$resetattempt=1;
 			$username=$_POST['username'];
 			$password=$_POST['password'];
 			//validating input
@@ -26,11 +27,13 @@
 				{
 					mysqli_stmt_bind_result($stmt, $result);
 					mysqli_stmt_fetch($stmt);
+					$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=? WHERE username=?");
 					if(($result < 4) and ($result>0)) //checking whether the user exist and there were less than 4 login attempts
 					{
 						$_SESSION['username'] = $username; // Initializing Session
 						//If login was successful the attempt field is changed to 1
-						$query = mysqli_query($db, "UPDATE users SET attempt=1 WHERE username='$username'") or die(mysqli_error($db));
+						mysqli_stmt_bind_param($stmt2, "is", $resetattempt,$username); //Binding the variables
+						mysqli_stmt_execute($stmt2);
 						header("location: photos.php"); // Redirecting To Other Page
 					}else
 					{
