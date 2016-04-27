@@ -22,7 +22,7 @@ if(isset($_POST["submit"]))
     $password = md5($password);
 
     //Prepared statement
-    $query=
+    //$query=
     $reguser = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?");
 
     //Binding the parameter
