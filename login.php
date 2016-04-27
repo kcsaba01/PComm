@@ -25,6 +25,7 @@
 				if (mysqli_stmt_execute($stmt))
 				{
 					mysqli_stmt_bind_result($stmt, $result);
+					mysqli_stmt_fetch($stmt);
 					if(($result < 4) and ($result>0)) //checking whether the user exist and there were less than 4 login attempts
 					{
 						$_SESSION['username'] = $username; // Initializing Session
