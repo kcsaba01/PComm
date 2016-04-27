@@ -14,7 +14,14 @@ if(isset($_POST["submit"]))
     if ($stmt = mysqli_prepare($db,"INSERT INTO users (username, email, password, admin, attempt) VALUES (?, ?, ?, ?, ?)" ))
     {
         mysqli_stmt_bind_param($stmt, "s", $name, $email, $password, $admin, $attempt);
-        mysqli_stmt_execute($stmt);
+        if (mysqli_stmt_execute($stmt))
+        {
+            $msg="Success";
+        }
+        else
+        {
+            $msg ="Not";
+        }
         mysqli_stmt_close($stmt);
     }
     mysqli_close($db);
