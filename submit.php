@@ -16,11 +16,11 @@ if(isset($_POST["submit"]))
         mysqli_stmt_bind_param($stmt, "sssii", $name, $password, $email, $admin, $attempt);
         if (mysqli_stmt_execute($stmt))
         {
-            $msg="Success";
+            $msg="Thank You! you are now registered. click <a href='index.php'>here</a> to login";
         }
         else
         {
-            $msg =$name . $email . $password;
+            $msg =mysqli_stmt_error($stmt) . "Adding user failed";
         }
         mysqli_stmt_close($stmt);
     }
