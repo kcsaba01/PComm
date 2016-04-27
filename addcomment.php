@@ -30,7 +30,7 @@ if(isset($_POST["submit"])) {
     } else {
         $msg = "Comment added successfully";
     }
-    $addcomment->close();
-    $conn->close();
+    
 }
+$addcomment->close();
 ?>
