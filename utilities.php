@@ -19,7 +19,7 @@ function xecho($data) //function to clear output
 }
 
 //SQL Prepared statements
-
+//Prepared statement to add a comment
 $addcomment = $conn->prepare("INSERT INTO comments (description, postDate, userID, photoID) VALUES (?,NOW(), ?, ?)");
 
 ?>

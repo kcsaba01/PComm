@@ -32,6 +32,9 @@ if(isset($_POST["submit"]))
         $msg = "You need to login first";
     }
 }
-$addcomment->bind_param("sss", $desc, $id,$photoID);
+if(!($addcomment->bind_param("sss", $desc, $id, $photoID)))
+{
+    xecho("Binding has failed" . $addcomment->errno . " " . $addcomment->error);
+}
 $addcomment->execute();
 ?>
