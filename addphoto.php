@@ -21,8 +21,6 @@ if(isset($_POST["submit"]))
     $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 
     if(mysqli_num_rows($result) == 1) {
-        //$timestamp = time();
-        //$target_file = $target_file.$timestamp;
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $id = $row['userID'];
             //$addsql = "INSERT INTO photos (title, description, postDate, url, userID) VALUES ('$title','$desc',now(),'$target_file','$id')";
@@ -34,13 +32,23 @@ if(isset($_POST["submit"]))
         } else {
             $msg = "Sorry, there was an error uploading your file.";
         }
-        //echo $name." ".$email." ".$password;
-
-
     }
     else{
         $msg = "You need to login first";
     }
 }
-
+//Binding the parameter, the statement is contained in utilities.php
+if(!($insertphotos->bind_param("ssst", $title,$desc,$target_file,$id)))
+{
+    xecho("Binding has failed" . $insertphotos->errno . " " . $insertphotos->error);
+}
+//Executing
+if (!$insertphotos->execute())
+{
+    xecho("Execute has failed" . $insertphotos->errno . " " . $insertphotos->error);
+}
+else
+{
+    $msg = "Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded. click <a href='photos.php'>here</a> to go back";
+}
 ?>
