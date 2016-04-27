@@ -2,17 +2,20 @@
 $msg = "";
 include("connection.php");
 include("utilities.php");
-$conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+
 if(isset($_POST["submit"]))
 {
 
     $name = $_POST["username"];
     $email = $_POST["email"]; //changed the database so it will need to be unique
     $password = $_POST["password"];
-
+    if ($stmt = mysqli_prepare($db,"INSERT INTO users (username, email, password) VALUES (?, ?, ?)" ))
+    {
+        mysqli_stmt_bind_param($stmt, "s", $name, $email, $password);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+    mysqli_close($db);
     //checking for illegal characters
     //$username = mysqli_real_escape_string($db, $username);
     //$password = mysqli_real_escape_string($db, $password);
@@ -22,21 +25,21 @@ if(isset($_POST["submit"]))
     //$password = md5($password);
 
     //Prepared statement
-    $query= "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-    $reguser = $conn->prepare($query);
+    //$query= "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+    //$reguser = $conn->prepare($query);
 
     //Binding the parameter
-    if (!($reguser->bind_param("reguser", $name, $email, $password))) {
-        xecho("Binding has failed" . $reguser->errno . " " . $reguser->error);
-    }
+    //if (!($reguser->bind_param("reguser", $name, $email, $password))) {
+     //   xecho("Binding has failed" . $reguser->errno . " " . $reguser->error);
+    //}
 
     //Executing, error will be returned if the email already exists
-    if (!$reguser->execute()) {
-        xecho ("Execute has failed" . $reguser->errno . " " . $reguser->error);
-    } else {
-        $msg = "Thank You! you are now registered. click <a href='index.php'>here</a> to login";
-        $reguser->close();
-        $conn->close();
-    }
+//    if (!$reguser->execute()) {
+  //      xecho ("Execute has failed" . $reguser->errno . " " . $reguser->error);
+    //} else {
+      //  $msg = "Thank You! you are now registered. click <a href='index.php'>here</a> to login";
+        //$reguser->close();
+        //$conn->close();
+    //}
 }
 ?>
