@@ -33,7 +33,10 @@
 						$_SESSION['username'] = $username; // Initializing Session
 						//If login was successful the attempt field is changed to 1
 						mysqli_stmt_bind_param($stmt2, "is", $resetattempt,$username); //Binding the variables
-						mysqli_stmt_execute($stmt2);
+						if (!mysqli_stmt_execute($stmt2))
+						{
+							printf("error");
+						};
 						header("location: photos.php"); // Redirecting To Other Page
 					}else
 					{
