@@ -38,10 +38,7 @@ if(isset($_POST["submit"]))
                 }
                 mysqli_stmt_close($stmt); //closing the statement
             }
-
-
         }
-
     }
     else{
         $msg = "You need to login first";
