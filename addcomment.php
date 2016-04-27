@@ -5,6 +5,7 @@ include("utilities.php"); //contains the prepared statements
 $msg = ""; //Variable for storing our errors.
 if(isset($_POST["submit"]))
 {
+    $desc=" ";
     $desc = $_POST["desc"];
     $photoID = $_POST["photoID"];
     //Sanitising the input
