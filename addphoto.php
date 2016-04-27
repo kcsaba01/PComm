@@ -11,7 +11,6 @@ if(isset($_POST["submit"]))
     $desc = mysqli_real_escape_string($db, $desc);
     $url = "test";
     $name = $_SESSION["username"];
-
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -26,11 +25,11 @@ if(isset($_POST["submit"]))
         //$target_file = $target_file.$timestamp;
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $id = $row['userID'];
-            $addsql = "INSERT INTO photos (title, description, postDate, url, userID) VALUES ('$title','$desc',now(),'$target_file','$id')";
-            $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-            if ($query) {
-                $msg = "Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded. click <a href='photos.php'>here</a> to go back";
-            }
+            //$addsql = "INSERT INTO photos (title, description, postDate, url, userID) VALUES ('$title','$desc',now(),'$target_file','$id')";
+            //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+            //if ($query) {
+            //    $msg = "Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded. click <a href='photos.php'>here</a> to go back";
+            //}
 
         } else {
             $msg = "Sorry, there was an error uploading your file.";
