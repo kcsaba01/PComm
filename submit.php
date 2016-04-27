@@ -1,8 +1,13 @@
 <?php
 $msg = "";
 include("connection.php");
+$conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 if(isset($_POST["submit"]))
 {
+
     $name = $_POST["username"];
     $email = $_POST["email"]; //changed the database so it will need to be unique
     $password = $_POST["password"];
