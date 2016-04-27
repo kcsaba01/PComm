@@ -14,12 +14,12 @@ if(isset($_POST["submit"]))
     $password = $_POST["password"];
 
     //checking for illegal characters
-    $username = mysqli_real_escape_string($db, $username);
-    $password = mysqli_real_escape_string($db, $password);
-    $email = mysqli_real_escape_string($db, $email);
+    //$username = mysqli_real_escape_string($db, $username);
+    //$password = mysqli_real_escape_string($db, $password);
+    //$email = mysqli_real_escape_string($db, $email);
 
     //storing the hash instead of the password
-    $password = md5($password);
+    //$password = md5($password);
 
     //Prepared statement
     $query= "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
