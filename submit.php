@@ -10,7 +10,7 @@ if(isset($_POST["submit"]))
     $email = $_POST["email"]; //changed the database so it will need to be unique
     $password = $_POST["password"];
     $admin=0;
-    $attept=1;
+    $attempt=1;
     if ($stmt = mysqli_prepare($db,"INSERT INTO users (username, email, password, admin, attempt) VALUES (?, ?, ?, ?, ?)" ))
     {
         mysqli_stmt_bind_param($stmt, "s", $name, $email, $password, $admin, $attempt);
