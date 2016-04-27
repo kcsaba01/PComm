@@ -25,7 +25,7 @@ if(isset($_POST["submit"]))
 
     //Executing, error will be returned if the email already exists
     if (!$reguser->execute()) {
-        $msg= ("Execute has failed" . $reguser->errno . " " . $reguser->error);
+        xecho ("Execute has failed" . $reguser->errno . " " . $reguser->error);
     } else {
         $msg = "Thank You! you are now registered. click <a href='index.php'>here</a> to login";
         $reguser->close();
