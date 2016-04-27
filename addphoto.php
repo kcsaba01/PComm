@@ -3,10 +3,6 @@ session_start();
 include("connection.php"); //Establishing connection with our database
 include("utilities.php"); //contains the prepared statements
 $msg = ""; //Variable for storing our errors.
-$title="title1";
-$desc="desc1";
-$target_file="targetfile1";
-$id=1;
 if(isset($_POST["submit"])) {
     $title = $_POST["title"];
     $desc = $_POST["desc"];
@@ -24,7 +20,6 @@ if(isset($_POST["submit"])) {
     } else {
         $msg = "You need to login first";
     }
-
 
 //Binding the parameter, the statement is contained in utilities.php
     if (!($insertphotos->bind_param("ssst", $title, $desc, $target_file, $id))) {
