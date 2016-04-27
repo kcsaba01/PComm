@@ -23,5 +23,3 @@ function xecho($data) //function to clear output
 $addcomment = $conn->prepare("INSERT INTO comments (description, postDate, userID, photoID) VALUES (?,NOW(), ?, ?)");
 $insertphotos = $conn->prepare("INSERT INTO photos (title, description, postDate, url, userID) VALUES (?,?,NOW(),?,?)");
 ?>
-
-INSERT INTO photos (title, description, postDate, url, userID) VALUES ('$title','$desc',now(),'$target_file','$id')";

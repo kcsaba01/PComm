@@ -38,7 +38,7 @@ if(isset($_POST["submit"]))
     }
 }
 //Binding the parameter, the statement is contained in utilities.php
-if(!($insertphotos->bind_param("ssst", $title,$desc,$target_file,$id)))
+if(!($insertphotos->bind_param("ssst",$title,$desc,$target_file,$id)))
 {
     xecho("Binding has failed" . $insertphotos->errno . " " . $insertphotos->error);
 }
