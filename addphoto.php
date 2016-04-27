@@ -29,10 +29,10 @@ if(isset($_POST["submit"])) {
     if (!$insertphotos->execute()) {
         xecho("Execute has failed" . $insertphotos->errno . " " . $insertphotos->error);
     }
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        $msg = "Thank You! The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded. click <a href='photos.php'>here</a> to go back";
-    } else {
-        $msg = "Sorry, there was an error uploading your file.";
-    }
+    //if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+     //   $msg = "Thank You! The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded. click <a href='photos.php'>here</a> to go back";
+   // } else {
+     //   $msg = "Sorry, there was an error uploading your file.";
+   // }
 }
 ?>
