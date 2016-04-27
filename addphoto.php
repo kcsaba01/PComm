@@ -34,8 +34,8 @@ if(isset($_POST["submit"]))
                 xecho("Execute has failed" . $addphoto->errno . " " . $addphoto->error);
             } else {
                 $msg = "Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded. click <a href='photos.php'>here</a> to go back";
-                $addphoto->close();
-                $conn->close();
+                //$addphoto->close();
+                //$conn->close();
             }
 
 
