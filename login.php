@@ -30,23 +30,9 @@
 
 					if(($result < 4) and ($result>0)) //checking whether the user exist and there were less than 4 login attempts
 					{
-						//$_SESSION['username'] = $username; // Initializing Session
+						$_SESSION['username'] = $username; // Initializing Session
 						//If login was successful the attempt field is changed to 1
-						if ($stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1 WHERE username=?"))
-						{
-							mysqli_stmt_bind_param($stmt2, "s", $username); //Binding the variables
-							if (mysqli_stmt_execute($stmt2))
-							{
-								$msg="Comment added successfully";
-							}
-							else
-							{
-								echo(mysqli_stmt_error($stmt2)); //Displaying the reason why the adding has failed
-							}
-						}
-
-
-						//header("location: photos.php"); // Redirecting To Other Page
+						header("location: photos.php"); // Redirecting To Other Page
 					}else
 					{
 						$error = "Incorrect username/password or the acount is blocked";
