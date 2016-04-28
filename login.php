@@ -41,7 +41,7 @@
 							}
 							else
 							{
-								$msg =mysqli_stmt_error($stmt) . " Adding comment failed"; //Displaying the reason why the adding has failed
+								echo(mysqli_stmt_error($stmt2)); //Displaying the reason why the adding has failed
 							}
 						}
 
