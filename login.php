@@ -32,6 +32,7 @@
 					{
 						$_SESSION['username'] = $username; // Initializing Session
 						//If login was successful the attempt field is changed to 1
+						mysqli_stmt_close($stmt);
 						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1 WHERE username='test123'");
 						mysqli_stmt_execute($stmt2);
 						header("location: photos.php"); // Redirecting To Other Page
