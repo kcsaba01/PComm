@@ -40,6 +40,7 @@
 					}else
 					{
 						$error = "Incorrect username/password or the acount is blocked";
+						//Login unsuccessful, increasing attempt with 1
 						mysqli_stmt_close($stmt);
 						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=attempt+1 WHERE username='$username'");
 						mysqli_stmt_execute($stmt2);
@@ -53,7 +54,6 @@
 
 			}
 		}
-		//mysqli_stmt_close($stmt); //closing the statement
 		mysqli_close($db); //closing the connection
 	}
 
