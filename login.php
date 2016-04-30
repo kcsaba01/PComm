@@ -31,7 +31,8 @@
 					if(($result < 4) and ($result>0)) //checking whether the user exist and there were less than 4 login attempts
 					{
 						$_SESSION['username'] = $username;// Initializing Session
-						$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+						$IP = getenv("REMOTE_ADDR");
+						$_SESSION['IP'] = $IP;
 						//If login was successful the attempt field is changed to 1
 						mysqli_stmt_close($stmt);
 						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1 WHERE username='$username'");
