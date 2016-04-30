@@ -21,7 +21,7 @@
 			$password=mysqli_real_escape_string($db, $password);
 			$password = md5($password); //storing the password as hash
 
-			if ($stmt = mysqli_prepare($db,"SELECT attempt FROM users WHERE username=? and password=?")) //Preparing the statement
+			if ($stmt = mysqli_prepare($db,"SELECT attempt FROM users WHERE username='?' and password='?'")) //Preparing the statement
 			{
 				mysqli_stmt_bind_param($stmt, "ss", $username, $password); //Binding the variables
 				if (mysqli_stmt_execute($stmt))
