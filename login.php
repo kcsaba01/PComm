@@ -40,6 +40,7 @@
 						mysqli_stmt_bind_param($stmt2, "ss", $IP, $username);
 						mysqli_stmt_execute($stmt2);
 						mysqli_stmt_close($stmt2);
+						//Retrieving the user id for the logge din user and attach it to the session
 						$stmt3 = mysqli_prepare($db,"SELECT userID FROM users WHERE username=?");
 						mysqli_stmt_bind_param($stmt3, "s", $username);
 						mysqli_stmt_execute($stmt3);
@@ -47,13 +48,14 @@
 						mysqli_stmt_fetch($stmt3);
 						$_SESSION['userid'] = $result3;
 						mysqli_stmt_close($stmt3);
-						header("location: photos.php"); // Redirecting To Other Page
+						header("location: photos.php"); // Redirecting to photos Page
 					}else
 					{
 						$error = "Incorrect username/password or the acount is blocked";
 						//Login unsuccessful, increasing attempt with 1
 						mysqli_stmt_close($stmt);
-						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=attempt+1 WHERE username='$username'");
+						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=attempt+1 WHERE username=?");
+						mysqli_stmt_bind_param($stmt2, "s", $username);
 						mysqli_stmt_execute($stmt2);
 						mysqli_stmt_close($stmt2);
 					}
