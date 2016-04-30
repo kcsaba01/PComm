@@ -39,7 +39,7 @@
 						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1, remoteip='$IP' WHERE username='$username'");
 						mysqli_stmt_execute($stmt2);
 						mysqli_stmt_close($stmt2);
-						$stmt3 = mysqli_prepare($db,"SELECT userID FROM users WHERE username='?'");
+						$stmt3 = mysqli_prepare($db,"SELECT userID FROM users WHERE username=?");
 						mysqli_stmt_bind_param($stmt3, "s", $username);
 						mysqli_stmt_execute($stmt3);
 						mysqli_stmt_bind_result($stmt3, $result3);
