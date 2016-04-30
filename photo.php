@@ -51,10 +51,10 @@
             }
 
         }
-    else{
+        else{
 
         echo "<h1>No User Selected</h1>";
-    }
+        }
 
     ?>
 </div>
