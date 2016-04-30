@@ -28,7 +28,7 @@
                 $logedinuserstr = strval($_SESSION['userid']);
                 if ( $logedinuserstr != $photoRow['userID']) //protection against URL guessing
                 {
-                  echo("test");
+                  header("index.php");
                 }
                 echo ("<h1>".gettype($photoRow['userID']). gettype($_SESSION['userid'])."</h1>");
                 echo ("<h1>".xsssafe($photoRow['title'])."</h1>");
