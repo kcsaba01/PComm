@@ -15,9 +15,9 @@
 			//validating input
 			$username=$_POST['username'];
 			$password=$_POST['password'];
+			$username = xsssafe($username);
+			$password = xsssafe($password);
 			$username=mysqli_real_escape_string($db, $username);
-			//$username = xsssafe($username);
-			//$password = xsssafe($password);
 			$password = mysqli_real_escape_string($db, $password);
 			$password = md5($password); //storing the password as hash
 
