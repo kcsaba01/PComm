@@ -1,7 +1,7 @@
 <?php
 	include("check.php");
     include("connection.php");
-    include("sessioncheck.php");
+    //include("sessioncheck.php");
     include("utilities.php");
 ?>
 <!doctype html>
