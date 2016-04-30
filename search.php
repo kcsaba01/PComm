@@ -8,13 +8,13 @@ if(isset($_POST["submit"]))
     $name = mysqli_real_escape_string($db, $name);
     $name = xsssafe($name);
     //getting the user id from the username
-    $stmt3 = mysqli_prepare($db,"SELECT userID FROM users WHERE username=?");
-    mysqli_stmt_bind_param($stmt3, "s", $name);
-    mysqli_stmt_execute($stmt3);
-    mysqli_stmt_bind_result($stmt3, $result3);
-    mysqli_stmt_fetch($stmt3);
-    $searchID = $result3;
-    mysqli_stmt_close($stmt3);
+    $stmt4 = mysqli_prepare($db,"SELECT userID FROM users WHERE username=?");
+    mysqli_stmt_bind_param($stmt4, "s", $name);
+    mysqli_stmt_execute($stmt4);
+    mysqli_stmt_bind_result($stmt4, $result4);
+    mysqli_stmt_fetch($stmt4);
+    $searchID = $result4;
+    mysqli_stmt_close($stmt4);
     if ($searchID != "")
     {
         $searchSql= mysqli_prepare($db,"SELECT title, photoID FROM photos WHERE userID=?");
