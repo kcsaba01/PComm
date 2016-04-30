@@ -14,11 +14,10 @@ if(isset($_POST["submit"]))
     $password = md5($password);
     $admin=0;
     $attempt=1;
-    
-    if ($stmt = mysqli_prepare($db,"INSERT INTO users (username, password, email, admin, attempt) VALUES (?, ?, ?, ?, ?)" )) //Preparing the statement
+        if ($stmtr = mysqli_prepare($db,"INSERT INTO users (username, password, email, admin, attempt) VALUES (?, ?, ?, ?, ?)" )) //Preparing the statement
     {
-        mysqli_stmt_bind_param($stmt, "sssii", $name, $password, $email, $admin, $attempt); //Binding the variables
-        if (mysqli_stmt_execute($stmt))
+        mysqli_stmt_bind_param($stmtr, "sssii", $name, $password, $email, $admin, $attempt); //Binding the variables
+        if (mysqli_stmt_execute($stmtr))
         {
             $msg="Thank You! you are now registered";
         }
@@ -26,7 +25,7 @@ if(isset($_POST["submit"]))
         {
             $msg = "Adding user failed"; //Keeping the message intentionally vague to not give out extra information about the DB
         }
-        mysqli_stmt_close($stmt); //closing the statement
+        mysqli_stmt_close($stmtr); //closing the statement
     }
 }
 ?>
