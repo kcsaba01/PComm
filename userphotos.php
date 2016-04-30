@@ -1,4 +1,7 @@
 <?php
+session_start();
+$test = $_SESSION["IP"];
+echo($test);
 $resultText = "";
 if(isset($_SESSION['username']))
 {

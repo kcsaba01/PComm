@@ -1,8 +1,7 @@
 <?php
 	include("check.php");
 	include("userphotos.php");
-	$test = $_SESSION("IP");
-	echo($test);
+
 ?>
 
 <!doctype html>
