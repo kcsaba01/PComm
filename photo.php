@@ -25,10 +25,11 @@
             if((mysqli_num_rows($photoresult)==1))
             {
                 $photoRow = mysqli_fetch_assoc($photoresult);
-                if ($_SESSION['userid'] == $photoresult['userID']) //protection against URL guessing
-                {
-                    header('Location: index.php');
-                }
+                //if ($_SESSION['userid'] != $photoresult['userID']) //protection against URL guessing
+                //{
+                  //  header('Location: index.php');
+                //}
+                echo ("<h1>".xsssafe($photoRow['userID']). $_SESSION['userid']."</h1>");
                 echo ("<h1>".xsssafe($photoRow['title'])."</h1>");
                 echo "<h3>".xsssafe($photoRow['postDate'])."</h3>";
                 echo "<img src='".xsssafe($photoRow['url'])."'/>";
