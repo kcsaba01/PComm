@@ -1,7 +1,8 @@
 <?php
 	include("check.php");
 	include("userphotos.php");
-	echo($_SESSION('remoteip'));
+	$test = $_SESSION('ip');
+	echo($test);
 ?>
 
 <!doctype html>
