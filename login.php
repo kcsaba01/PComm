@@ -52,7 +52,7 @@
 				}
 				else
 				{
-					$error =mysqli_stmt_error($stmt) . " There was an error"; //Displaying the reason why the adding has failed
+					$error ="There was an error"; //The reason has been omited as the user should not be provided with information of the DB
 				}
 
 			}

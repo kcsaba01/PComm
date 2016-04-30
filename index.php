@@ -1,6 +1,6 @@
 <?php
 	include('login.php'); // Include Login Script
-    include('utilities.php');
+    include('utilities.php'); //Include utilities (xsssafe and xecho)
 
 	if ((isset($_SESSION['username']) != '')) 
 	{
