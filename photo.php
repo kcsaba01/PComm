@@ -30,6 +30,7 @@
                 //    header('Location: index.php');
                 //}
                 echo ("<h1>".xsssafe($photoRow['userID'])."</h1>");
+                echo ("<h1>".xsssafe($_SESSION['userid'])."</h1>");
                 echo ("<h1>".xsssafe($photoRow['title'])."</h1>");
                 echo "<h3>".xsssafe($photoRow['postDate'])."</h3>";
                 echo "<img src='".xsssafe($photoRow['url'])."'/>";
