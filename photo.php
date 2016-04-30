@@ -17,7 +17,7 @@
 <div id="photo">
     <?php
     include("check.php");
-    if(isset($_GET['id']))// and is_numeric($_GET['id']))//checking whether the id is numeric
+    if(isset($_GET['id'])and is_numeric($_GET['id']))//checking whether the id is numeric
         {
             $photoID = $_GET['id'];
             $photoSql = "SELECT * FROM photos WHERE photoID='$photoID'";
