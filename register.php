@@ -28,7 +28,7 @@
 			<input type="password" name="password" placeholder="password" required/>  <br><br>
 			<input type="submit" name="submit" value="Register!" />
 		</form>
-		<div class="error"><?php echo $msg;?></div>
+		<div class="error"><?php xecho ($msg);?></div>
 	</div>
 </body>
 </html>

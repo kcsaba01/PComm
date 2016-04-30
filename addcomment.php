@@ -2,11 +2,14 @@
 include("connection.php"); //Establishing connection with our database
 include("sessioncheck.php");
 include("utilities.php");
+
 session_start();
 $msg = ""; //Variable for storing our errors.
+
 if(isset($_POST["submit"])) {
     $desc = $_POST["desc"];
     $photoID = $_POST["photoID"];
+    $desc=xsssafe($desc);
 
     //Sanitising the input
     $desc = mysqli_real_escape_string($db, $desc);

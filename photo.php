@@ -24,8 +24,8 @@
                 $photoRow = mysqli_fetch_assoc($photoresult);
                 echo ("<h1>".xsssafe($photoRow['title'])."</h1>");
                 echo "<h3>".xsssafe($photoRow['postDate'])."</h3>";
-                echo "<img src='".$photoRow['url']."'/>";
-                echo " <p>".$photoRow['description']."</p>";
+                echo "<img src='".xsssafe($photoRow['url'])."'/>";
+                echo " <p>".xsssafe($photoRow['description'])."</p>";
 
 
                 $commentSql="SELECT * FROM comments WHERE photoID='$photoID'";
@@ -35,16 +35,16 @@
                     echo "<h2> Comments </h2>";
                     while($commentRow = mysqli_fetch_assoc($commentresult)){
                         echo "<div class = 'comments'>";
-                        echo "<h3>".$commentRow['postDate']."</h3>";
-                        echo "<p>".$commentRow['description']."</p>";
+                        echo "<h3>".xsssafe($commentRow['postDate'])."</h3>";
+                        echo "<p>".xsssafe($commentRow['description'])."</p>";
                         echo "</div>";
                     }
 
                 }
-                echo "<a href='addcommentform.php?id=".$photoID."'> Add Comment</a><br>";
+                echo "<a href='addcommentform.php?id=".xsssafe($photoID)."'> Add Comment</a><br>";
 
                 if($adminuser){
-                    echo "<div class='error'><a href='removephoto.php?id=".$photoID."'> Delete Photo</a></div>";
+                    echo "<div class='error'><a href='removephoto.php?id=".xsssafe($photoID)."'> Delete Photo</a></div>";
                 }
 
             }
