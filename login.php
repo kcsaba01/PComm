@@ -31,12 +31,12 @@
 					{
 						session_start();
 						$_SESSION['username'] = $username;// Initializing Session
-						$IP = getenv("REMOTE_ADDR");
+						$IP = strval(getenv("REMOTE_ADDR"));
 						$_SESSION['IP'] = $IP;
 						$_SESSION['timeout'] = time();
 						//If login was successful the attempt field is changed to 1
 						mysqli_stmt_close($stmt);
-						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1, remoteip= '?' WHERE username=?");
+						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1, remoteip= ' WHERE username=?");
 						mysqli_stmt_bind_param($stmt2, "ss", $IP, $username);
 						mysqli_stmt_execute($stmt2);
 						mysqli_stmt_close($stmt2);
