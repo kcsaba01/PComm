@@ -25,7 +25,7 @@
             if((mysqli_num_rows($photoresult)==1))
             {
                 $photoRow = mysqli_fetch_assoc($photoresult);
-                if ($login_userid != $photoresult['userID']) //protection against URL guessing
+                if ($_SESSION['userid'] != $photoresult['userID']) //protection against URL guessing
                 {
                     header('Location: photos.php');
                 }
