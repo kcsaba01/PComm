@@ -26,7 +26,7 @@
             {
                 $photoRow = mysqli_fetch_assoc($photoresult);
                 $logedinuserstr = strval($_SESSION['userid']);
-                if ( $logedinuserstr != $photoRow['userID'] or $adminuser) //protection against URL guessing, if the logged in user is not the same as the picture's owner, the user is logged out
+                if ( $logedinuserstr != $photoRow['userID'] and !$adminuser) //protection against URL guessing, if the logged in user is not the same as the picture's owner, the user is logged out
                 {
                     header("Location: logout.php");
                 }
