@@ -30,9 +30,9 @@ if(isset($_POST["submit"]))
     $result=mysqli_query($db,$sql);
     $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-    if(mysqli_num_rows($result) == 1) {
+    if($_SESSION['userid'] != "") {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            $id = $row['userID'];
+            $id = $_SESSION['userid'];
             if ($stmt = mysqli_prepare($db,"INSERT INTO photos (title, description, postDate, url, userID) VALUES (?, ?, NOW(), ?, ?)")) //Preparing the statement
             {
                 mysqli_stmt_bind_param($stmt, "sssi", $title, $desc, $target_file, $id); //Binding the variables
