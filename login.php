@@ -11,6 +11,7 @@
 		{
 			// Define $username and $password
 			$result=0;
+			$resetattempt=1;
 			//validating input
 			$username=$_POST['username'];
 			$password=$_POST['password'];
