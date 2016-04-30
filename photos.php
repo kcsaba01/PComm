@@ -1,6 +1,7 @@
 <?php
 	include("check.php");
 	include("userphotos.php");
+	echo(_SESSION('IPADDRESS'));
 ?>
 
 <!doctype html>
