@@ -1,8 +1,8 @@
 <?php
 
-	include("connection.php");
-	include("submit.php");
-	include("utilities.php");
+	//include("connection.php");
+	//include("submit.php");
+	//include("utilities.php");
 
 ?>
 <!doctype html>
