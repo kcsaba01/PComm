@@ -27,7 +27,7 @@
                 $photoRow = mysqli_fetch_assoc($photoresult);
                 if ($_SESSION['userid'] != $photoresult['userID']) //protection against URL guessing
                 {
-                    header('Location: photos.php');
+                    header('Location: index.php');
                 }
                 echo ("<h1>".xsssafe($photoRow['title'])."</h1>");
                 echo "<h3>".xsssafe($photoRow['postDate'])."</h3>";
