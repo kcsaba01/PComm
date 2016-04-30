@@ -51,7 +51,7 @@
 				}
 				else
 				{
-					$msg =mysqli_stmt_error($stmt) . " There was an error"; //Displaying the reason why the adding has failed
+					$error =mysqli_stmt_error($stmt) . " There was an error"; //Displaying the reason why the adding has failed
 				}
 
 			}

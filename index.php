@@ -1,5 +1,6 @@
 <?php
 	include('login.php'); // Include Login Script
+    include('utilities.php');
 
 	if ((isset($_SESSION['username']) != '')) 
 	{
@@ -28,7 +29,7 @@
             <input type="password" name="password" placeholder="password" />  <br><br>
             <input type="submit" name="submit" value="Login" />
         </form>
-        <div class="error"><?php echo $error;?></div>
+        <div class="error"><?php xecho($error);?></div>
         <div class="register">You can register <a href="register.php"> here </a> </div>
     </div>
 
