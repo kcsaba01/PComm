@@ -26,10 +26,10 @@
             $photoresult=mysqli_query($db,$photoSql) or die(mysqli_error($db));
             if(mysqli_num_rows($photoresult)==1){
                 $photoRow = mysqli_fetch_assoc($photoresult);
-                echo ("<h1>".xsssafe(mysqli_real_escape_string($db,$photoRow['title']))."</h1>");
+                echo ("<h1>".xsssafe($photoRow['title']))."</h1>");
                 echo "<h3>".xsssafe($photoRow['postDate'])."</h3>";
-                echo "<img src='".xsssafe(mysqli_real_escape_string($db,$photoRow['url']))."'/>";
-                echo " <p>".xsssafe(mysqli_real_escape_string($db,$photoRow['description']))."</p>";
+                echo "<img src='".xsssafe($photoRow['url'])."'/>";
+                echo " <p>".xsssafe($photoRow['description'])."</p>";
                 $commentSql="SELECT * FROM comments WHERE photoID='$photoID'";
                 $commentresult=mysqli_query($db,$commentSql) or die(mysqli_error($db));
                 if(mysqli_num_rows($commentresult)>1) {
@@ -38,7 +38,7 @@
                     while($commentRow = mysqli_fetch_assoc($commentresult)){
                         echo "<div class = 'comments'>";
                         echo "<h3>".xsssafe($commentRow['postDate'])."</h3>";
-                        echo "<p>".xsssafe(mysqli_real_escape_string($db,$commentRow['description']))."</p>";
+                        echo "<p>".xsssafe($commentRow['description'])."</p>";
                         echo "</div>";
                     }
 
