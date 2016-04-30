@@ -36,7 +36,8 @@
 						$_SESSION['timeout'] = time();
 						//If login was successful the attempt field is changed to 1
 						mysqli_stmt_close($stmt);
-						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1, remoteip='$IP' WHERE username='$username'");
+						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1, remoteip= ? WHERE username=?");
+						mysqli_stmt_bind_param($stmt2, "ss", $IP, $username);
 						mysqli_stmt_execute($stmt2);
 						mysqli_stmt_close($stmt2);
 						$stmt3 = mysqli_prepare($db,"SELECT userID FROM users WHERE username=?");
