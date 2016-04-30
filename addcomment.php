@@ -39,7 +39,7 @@ if(isset($_POST["submit"])) {
         }
         mysqli_stmt_close($stmt); //closing the statement
     }
-    mysqli_close($db); //closing the connection
+
 }
 
 ?>
