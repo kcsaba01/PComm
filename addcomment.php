@@ -39,7 +39,7 @@ if(isset($_POST["submit"])) {
         }
         else
         {
-            $msg =mysqli_stmt_error($stmt) . " Adding comment failed"; //Displaying the reason why the adding has failed
+            $msg ="Adding comment failed"; //Displaying the reason why the adding has failed
         }
         mysqli_stmt_close($stmt); //closing the statement
     }

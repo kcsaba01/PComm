@@ -10,7 +10,8 @@ if(isset($_POST["submit"]))
     $desc = $_POST["desc"];
     $url = "test";
     $name = $_SESSION["username"];
-    //checking for illegal characters
+
+    //Sanitising the input
     $desc = xsssafe($desc);
     $title = xsssafe($title);
     $desc = mysqli_real_escape_string($db, $desc);
@@ -39,7 +40,7 @@ if(isset($_POST["submit"]))
                 }
                 else
                 {
-                    $msg =mysqli_stmt_error($stmt) . ". There was an error uploading your file."; //Displaying the reason why the adding has failed
+                    $msg ="There was an error uploading your file."; //Displaying the reason why the adding has failed
                 }
                 mysqli_stmt_close($stmt); //closing the statement
             }

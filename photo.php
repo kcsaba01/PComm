@@ -26,7 +26,6 @@
                 echo "<h3>".xsssafe($photoRow['postDate'])."</h3>";
                 echo "<img src='".xsssafe($photoRow['url'])."'/>";
                 echo " <p>".xsssafe($photoRow['description'])."</p>";
-
                 $commentSql="SELECT * FROM comments WHERE photoID='$photoID'";
                 $commentresult=mysqli_query($db,$commentSql) or die(mysqli_error($db));
                 if(mysqli_num_rows($commentresult)>1) {
