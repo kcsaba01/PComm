@@ -16,7 +16,7 @@
 <h4>Welcome <?php xecho ($login_user);?> <a href="photos.php" style="font-size:18px">Photos</a>||<a href="searchphotos.php" style="font-size:18px">Search</a>||<a href="logout.php" style="font-size:18px">Logout</a></h4>
 <div id="photo">
     <?php
-        if(isset($_GET['id']) and is_numerci($_GET['id'])){
+        if(isset($_GET['id']) and is_numeric($_GET['id'])){
             $photoID = $_GET['id'];
             $photoSql="SELECT * FROM photos WHERE photoID='$photoID'";
             $photoresult=mysqli_query($db,$photoSql) or die(mysqli_error($db));
@@ -42,7 +42,7 @@
                 echo "<a href='addcommentform.php?id=".xsssafe($photoID)."'> Add Comment</a><br>";
 
                 if($adminuser){
-                    echo "<div class='error'><a href='removephoto.php?id=".xsssafe($photoID)."'> Delete Photo</a></div>";
+                    echo "<div class='error'><a href='removephoto.php?id=".$photoID."'> Delete Photo</a></div>";
                 }
 
             }
