@@ -13,6 +13,7 @@ echo($sessionIP . "123");
 $uname = $_SESSION["username"];
 $uname = mysqli_real_escape_string($db, $uname);
 
+$result="";
 //retrieving the stored IP address
 if ($stmtIP = mysqli_prepare($db,"SELECT remoteip FROM users WHERE uname=?")) //Preparing the statement
 {
