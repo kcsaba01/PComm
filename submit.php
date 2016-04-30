@@ -9,6 +9,9 @@ if(isset($_POST["submit"]))
     $name = $_POST["username"];
     $email = $_POST["email"]; //changed the database so it will need to be unique
     $password = $_POST["password"];
+    $name = xsssafe($name);
+    $email = xsssafe($email);
+    $password = md5($password);
     $admin=0;
     $attempt=1;
     
@@ -25,6 +28,5 @@ if(isset($_POST["submit"]))
         }
         mysqli_stmt_close($stmt); //closing the statement
     }
-    mysqli_close($db); //closing the connection
 }
 ?>
