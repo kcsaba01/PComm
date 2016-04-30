@@ -16,11 +16,12 @@
 <h4>Welcome <?php xecho($login_user);?> <a href="photos.php" style="font-size:18px">Photos</a>||<a href="searchphotos.php" style="font-size:18px">Search</a>||<a href="logout.php" style="font-size:18px">Logout</a></h4>
 <div id="photo">
     <?php
-        if(isset($_GET['id']) and is_numeric($_GET['id'])){
+        if(isset($_GET['id']) and is_numeric($_GET['id']))//checking whether the id is numeric
+        {
             $photoID = $_GET['id'];
             $photoSql = "SELECT * FROM photos WHERE photoID='$photoID'";
             $photoresult = mysqli_query($db,$photoSql) or die(mysqli_error($db));
-            if(mysqli_num_rows($photoresult)==1)
+            if((mysqli_num_rows($photoresult)==1) and ($login_userid = $photoresult['userID'])) //protection against URL guessing
             {
                 $photoRow = mysqli_fetch_assoc($photoresult);
                 echo ("<h1>".xsssafe($photoRow['title'])."</h1>");
