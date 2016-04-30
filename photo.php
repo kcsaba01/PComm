@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<h4>Welcome <?php echo $login_user;?> <a href="photos.php" style="font-size:18px">Photos</a>||<a href="searchphotos.php" style="font-size:18px">Search</a>||<a href="logout.php" style="font-size:18px">Logout</a></h4>
+<h4>Welcome <?php xecho ($login_user);?> <a href="photos.php" style="font-size:18px">Photos</a>||<a href="searchphotos.php" style="font-size:18px">Search</a>||<a href="logout.php" style="font-size:18px">Logout</a></h4>
 <div id="photo">
     <?php
         if(isset($_GET['id'])){
@@ -22,7 +22,7 @@
             $photoresult=mysqli_query($db,$photoSql) or die(mysqli_error($db));
             if(mysqli_num_rows($photoresult)==1){
                 $photoRow = mysqli_fetch_assoc($photoresult);
-                echo "<h1>".$photoRow['title']."</h1>";
+                xecho ("<h1>".$photoRow['title']."</h1>");
                 echo "<h3>".$photoRow['postDate']."</h3>";
                 echo "<img src='".$photoRow['url']."'/>";
                 echo " <p>".$photoRow['description']."</p>";

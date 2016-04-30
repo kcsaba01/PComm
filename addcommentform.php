@@ -14,7 +14,7 @@ include("utilities.php");
 </head>
 
 <body>
-<h4>Welcome <?php echo $login_user;?> <a href="photos.php" style="font-size:18px">Photos</a>||<a href="searchphotos.php" style="font-size:18px">Search</a>||<a href="logout.php" style="font-size:18px">Logout</a></h4>
+<h4>Welcome <?php xecho($login_user);?> <a href="photos.php" style="font-size:18px">Photos</a>||<a href="searchphotos.php" style="font-size:18px">Search</a>||<a href="logout.php" style="font-size:18px">Logout</a></h4>
 
 <div class="main">
 
@@ -23,10 +23,10 @@ include("utilities.php");
         <label>Comment:</label><br>
         <textarea name="desc" cols="40" rows="5"  ></textarea><br><br>
         <label>Photo:</label>
-        <input type="text" name="photoID" value="<?php echo $_GET['id'] ?>" /><br><br>
+        <input type="text" name="photoID" value="<?php xecho ($_GET['id']) ?>" /><br><br>
         <input type="submit" name="submit" value="Submit Comment" />
     </form>
-    <div class="msg"><?php echo $msg;?></div>
+    <div class="msg"><?php xecho ($msg);?></div>
 </div>
     </div>
 </body>
