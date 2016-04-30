@@ -16,7 +16,8 @@
 <h4>Welcome <?php xecho($login_user);?> <a href="photos.php" style="font-size:18px">Photos</a>||<a href="searchphotos.php" style="font-size:18px">Search</a>||<a href="logout.php" style="font-size:18px">Logout</a></h4>
 <div id="photo">
     <?php
-        if(isset($_GET['id']))// and is_numeric($_GET['id']))//checking whether the id is numeric
+    include("check.php");
+    if(isset($_GET['id']))// and is_numeric($_GET['id']))//checking whether the id is numeric
         {
             $photoID = $_GET['id'];
             $photoSql = "SELECT * FROM photos WHERE photoID='$photoID'";
@@ -24,10 +25,10 @@
             if((mysqli_num_rows($photoresult)==1))
             {
                 $photoRow = mysqli_fetch_assoc($photoresult);
-               // if ($login_userid != $photoresult['userID']) //protection against URL guessing
-                //{
-                //    header('Location: photos.php');
-                //}
+                if ($login_userid != $photoresult['userID']) //protection against URL guessing
+                {
+                    header('Location: photos.php');
+                }
                 echo ("<h1>".xsssafe($photoRow['title'])."</h1>");
                 echo "<h3>".xsssafe($photoRow['postDate'])."</h3>";
                 echo "<img src='".xsssafe($photoRow['url'])."'/>";
