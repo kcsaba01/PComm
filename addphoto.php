@@ -38,7 +38,7 @@ if(isset($_POST["submit"]))
                 mysqli_stmt_bind_param($stmt, "sssi", $title, $desc, $target_file, $id); //Binding the variables
                 if (mysqli_stmt_execute($stmt))
                 {
-                    $msg="Thank You! The file ". xssafe(basename( $_FILES["fileToUpload"]["name"])). " has been uploaded";
+                    $msg="Thank You! The file ". $target_file. " has been uploaded";
                 }
                 else
                 {
