@@ -1,7 +1,7 @@
 <?php
 
 	include("connection.php");
-	//include("submit.php");
+	include("submit.php");
 	include("utilities.php");
 
 ?>
