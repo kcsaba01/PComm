@@ -21,9 +21,13 @@
             $photoID = $_GET['id'];
             $photoSql = "SELECT * FROM photos WHERE photoID='$photoID'";
             $photoresult = mysqli_query($db,$photoSql) or die(mysqli_error($db));
-            if((mysqli_num_rows($photoresult)==1) and ($login_userid = $photoresult['userID'])) //protection against URL guessing. if a user tries to access a picture where he/she is not the owner
+            if((mysqli_num_rows($photoresult)==1)) 
             {
                 $photoRow = mysqli_fetch_assoc($photoresult);
+                if ($login_userid != $photoresult['userID']) //protection against URL guessing
+                {
+                    header('Location: photos.php');
+                }
                 echo ("<h1>".xsssafe($photoRow['title'])."</h1>");
                 echo "<h3>".xsssafe($photoRow['postDate'])."</h3>";
                 echo "<img src='".xsssafe($photoRow['url'])."'/>";
