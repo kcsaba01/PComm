@@ -1,7 +1,7 @@
 <?php
 	include("check.php");
 	include("userphotos.php");
-	include("sessionIPcheck.php");
+	include("utilities.php");
 ?>
 
 <!doctype html>

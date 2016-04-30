@@ -33,6 +33,7 @@
 						$_SESSION['username'] = $username;// Initializing Session
 						$IP = getenv("REMOTE_ADDR");
 						$_SESSION['IP'] = $IP;
+						$_SESSION['timeout'] = time();
 						//If login was successful the attempt field is changed to 1
 						mysqli_stmt_close($stmt);
 						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1, remoteip='$IP' WHERE username='$username'");
