@@ -25,9 +25,10 @@
             if((mysqli_num_rows($photoresult)==1))
             {
                 $photoRow = mysqli_fetch_assoc($photoresult);
-                if (($_SESSION['userid']) != (strval($photoresult['userID']))) //protection against URL guessing
+                $logedinuserstr = strval($_SESSION['userid']);
+                if ( $logedinuserstr != $photoRow['userID']) //protection against URL guessing
                 {
-                 echo("test");
+                  echo("test");
                 }
                 echo ("<h1>".gettype($photoRow['userID']). gettype($_SESSION['userid'])."</h1>");
                 echo ("<h1>".xsssafe($photoRow['title'])."</h1>");
