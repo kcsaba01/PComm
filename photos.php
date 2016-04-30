@@ -1,6 +1,7 @@
 <?php
 	include("check.php");
 	include("userphotos.php");
+	include("sessioncheck.php");
 	include("utilities.php");
 ?>
 

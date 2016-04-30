@@ -1,6 +1,8 @@
 <?php
 	include("check.php");
 	include("search.php");
+	include("sessioncheck.php");
+	include("utilities.php");
 ?>
 
 <!doctype html>

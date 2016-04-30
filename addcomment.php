@@ -1,7 +1,8 @@
 <?php
-session_start();
 include("connection.php"); //Establishing connection with our database
-include("utilities.php"); //contains the prepared statements
+include("sessioncheck.php");
+include("utilities.php");
+session_start();
 $msg = ""; //Variable for storing our errors.
 if(isset($_POST["submit"])) {
     $desc = $_POST["desc"];
@@ -14,6 +15,7 @@ if(isset($_POST["submit"])) {
     //getting the userID from session
     $name = $_SESSION["username"];
     $sql = "SELECT userID FROM users WHERE username='$name'";
+
     $result = mysqli_query($db, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     if (mysqli_num_rows($result) == 1) {

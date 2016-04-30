@@ -1,6 +1,8 @@
 <?php
 session_start();
 include("connection.php"); //Establishing connection with our database
+include("sessioncheck.php");
+include("utilities.php");
 
 
 if(isset($_GET['id']))

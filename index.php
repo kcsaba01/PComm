@@ -1,6 +1,6 @@
 <?php
 	include('login.php'); // Include Login Script
-    //include('utilities.php');
+    include('utilities.php');
 
 	if ((isset($_SESSION['username']) != '')) 
 	{
@@ -24,9 +24,9 @@
         <br><br>
         <form method="post" action="">
             <label>Username:</label><br>
-            <input type="text" name="username" placeholder="username" /><br><br>
+            <input type="text" name="username" placeholder="Username" /><br><br>
             <label>Password:</label><br>
-            <input type="password" name="password" placeholder="password" />  <br><br>
+            <input type="password" name="password" placeholder="Password" />  <br><br>
             <input type="submit" name="submit" value="Login" />
         </form>
         <div class="error"><?php echo($error);?></div>

@@ -1,4 +1,6 @@
 <?php
+include("sessioncheck.php");
+include("utilities.php");
 $resultText = "";
 if(isset($_SESSION['username']))
 {
