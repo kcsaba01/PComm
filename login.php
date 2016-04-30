@@ -35,7 +35,7 @@
 						$_SESSION['IP'] = $IP;
 						//If login was successful the attempt field is changed to 1
 						mysqli_stmt_close($stmt);
-						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1 WHERE username='$username'");
+						$stmt2 = mysqli_prepare($db,"UPDATE users SET attempt=1, remoteip=$IP WHERE username='$username'");
 						mysqli_stmt_execute($stmt2);
 						mysqli_stmt_close($stmt2);
 						header("location: photos.php"); // Redirecting To Other Page
