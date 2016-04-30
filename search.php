@@ -23,7 +23,7 @@ if(isset($_POST["submit"]))
         mysqli_stmt_bind_result($searchSql, $title, $photo);
         if ($searchSql != "") {
             while (mysqli_stmt_fetch($searchSql)) {
-                $line = "<p><a href='photo.php?id=" . $photo . "'>" . $title . "</a></p>";
+                $line = "<p><a href='photo.php?id=" . xsssafe($photo) . "'>" . xsssafe($title) . "</a></p>";
                 $resultText = $resultText . $line;
             }
         }

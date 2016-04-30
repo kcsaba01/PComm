@@ -27,7 +27,7 @@
 </div>
 
 <div id="photolist">
-	<?php xecho ($resultText);?>
+	<?php echo $resultText;?>
 </div>
 
 	</div>
