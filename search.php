@@ -7,22 +7,24 @@ if(isset($_POST["submit"]))
     $name = $_POST["username"];
     $name = mysqli_real_escape_string($db, $name);
     $name = xsssafe($name);
-    
-    
-
-    $sql="SELECT userID FROM users WHERE username='$name'";
-    $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_assoc($result);
-    if(mysqli_num_rows($result) == 1)
+    //getting the user id from the username
+    $stmt3 = mysqli_prepare($db,"SELECT userID FROM users WHERE username=?");
+    mysqli_stmt_bind_param($stmt3, "s", $name);
+    mysqli_stmt_execute($stmt3);
+    mysqli_stmt_bind_result($stmt3, $result3);
+    mysqli_stmt_fetch($stmt3);
+    $searchID = $result3;
+    mysqli_stmt_close($stmt3);
+    if ($searchID != "")
     {
-        $searchID = $row['userID'];
-        $searchSql="SELECT title, photoID FROM photos WHERE userID='$searchID'";
-        $searchresult=mysqli_query($db,$searchSql);
-
-        if(mysqli_num_rows($searchresult)>0){
-            while($searchRow = mysqli_fetch_assoc($searchresult)){
-                $line = "<p><a href='photo.php?id=".$searchRow['photoID']."'>".$searchRow['title']."</a></p>";
-                $resultText = $resultText.$line;
+        $searchSql= mysqli_prepare($db,"SELECT title, photoID FROM photos WHERE userID=?");
+        mysqli_stmt_bind_param($searchSql, "s", $searchID);
+        mysqli_stmt_execute($searchSql);
+        mysqli_stmt_bind_result($searchSql, $title, $photo);
+        if ($searchSql != "") {
+            while (mysqli_stmt_fetch($searchSql)) {
+                $line = "<p><a href='photo.php?id=" . $photo . "'>" . $title . "</a></p>";
+                $resultText = $resultText . $line;
             }
         }
         else{

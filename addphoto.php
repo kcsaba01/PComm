@@ -24,13 +24,9 @@ if(isset($_POST["submit"]))
     $target_file = $target_dir . $targetfile;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     $uploadOk = 1;
+    
 
-    //Finding the userID of the logged in user
-    $sql="SELECT userID FROM users WHERE username='$name'";
-    $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-    if($_SESSION['userid'] != "") {
+    if($_SESSION['userid'] != "") { //retrieving the user id from session
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $id = $_SESSION['userid'];
             if ($stmt = mysqli_prepare($db,"INSERT INTO photos (title, description, postDate, url, userID) VALUES (?, ?, NOW(), ?, ?)")) //Preparing the statement
