@@ -3,7 +3,6 @@ include("connection.php"); //Establishing connection with our database
 include("sessioncheck.php");
 include("utilities.php");
 session_start();
-
 if(isset($_GET['id']) and is_numeric($_GET['id']))
 {
     $photoID = $_GET['id'];

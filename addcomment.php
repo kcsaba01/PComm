@@ -19,13 +19,9 @@ if(isset($_POST["submit"])) {
 
     //getting the userID from session
 
-    $name = $_SESSION["username"];
-    $sql = "SELECT userID FROM users WHERE username='$name'";
-
-    $result = mysqli_query($db, $sql);
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    if (mysqli_num_rows($result) == 1) {
-        $id = $row['userID'];
+    if ($_SESSION['userid'] !="")
+    {
+        $id = $_SESSION['userid'];
     } else {
         $msg = "You need to login first";
     }
