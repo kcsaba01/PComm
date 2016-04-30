@@ -28,7 +28,7 @@ include("utilities.php");
         <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
         <input type="submit" name="submit" value="Submit Photo" />
     </form>
-    <div class="msg"><?php xecho ($msg);?></div>
+    <div class="msg"><?php xecho ($msg);?> <p> "click <a href='photos.php'>here</a> to go back"</p></div>
 </div>
     </div>
 </body>

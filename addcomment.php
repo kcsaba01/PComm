@@ -9,13 +9,16 @@ $msg = ""; //Variable for storing our errors.
 if(isset($_POST["submit"])) {
     $desc = $_POST["desc"];
     $photoID = $_POST["photoID"];
-    $desc=xsssafe($desc);
-
+  
     //Sanitising the input
+
+    $desc=xsssafe($desc);
+    $photoID = xsssafe($photoID);
     $desc = mysqli_real_escape_string($db, $desc);
     $photoID = mysqli_real_escape_string($db, $photoID);
 
     //getting the userID from session
+
     $name = $_SESSION["username"];
     $sql = "SELECT userID FROM users WHERE username='$name'";
 

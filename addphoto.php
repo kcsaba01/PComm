@@ -11,12 +11,14 @@ if(isset($_POST["submit"]))
     $url = "test";
     $name = $_SESSION["username"];
     //checking for illegal characters
+    $desc = xsssafe($desc);
+    $title = xsssafe($title);
     $desc = mysqli_real_escape_string($db, $desc);
     $title = mysqli_real_escape_string($db, $title);
     
     //Setting the path
     $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $target_file = $target_dir . xsssafe(basename($_FILES["fileToUpload"]["name"]));
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     $uploadOk = 1;
 
@@ -33,7 +35,7 @@ if(isset($_POST["submit"]))
                 mysqli_stmt_bind_param($stmt, "sssi", $title, $desc, $target_file, $id); //Binding the variables
                 if (mysqli_stmt_execute($stmt))
                 {
-                    $msg="Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded. click <a href='photos.php'>here</a> to go back";
+                    $msg="Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded";
                 }
                 else
                 {

@@ -18,7 +18,7 @@
 <h4>Welcome <?php xecho ($login_user);?> <a href="photos.php" style="font-size:18px">Photos</a>||<a href="searchphotos.php" style="font-size:18px">Search</a>||<a href="logout.php" style="font-size:18px">Logout</a></h4>
 
 <div id="photolist">
-	<?php echo $resultText;?>
+	<?php xecho ($resultText);?>
 </div>
 <a href='addphotoform.php'> Add New Photo </a>;
 
