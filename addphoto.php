@@ -19,7 +19,9 @@ if(isset($_POST["submit"]))
     
     //Setting the path
     $target_dir = "uploads/";
-    $target_file = $target_dir . xsssafe(basename($_FILES["fileToUpload"]["name"]));
+    $targetfile= xsssafe(basename($_FILES["fileToUpload"]["name"]));
+    $targetfile = mysqli_real_escape_string($db, $targetfile);
+    $target_file = $target_dir . $targetfile;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     $uploadOk = 1;
 
