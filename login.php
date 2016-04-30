@@ -1,5 +1,6 @@
 <?php
-		include("connection.php"); //Establishing connection with our database
+		include("connection.php");//Establishing connection with our database
+		include("utilities.php");
 	
 	$error = ""; //Variable for storing our errors.
 	if(isset($_POST["submit"]))
