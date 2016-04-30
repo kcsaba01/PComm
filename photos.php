@@ -1,7 +1,7 @@
 <?php
 	include("check.php");
 	include("userphotos.php");
-	$test = getenv('REMOTE_ADDR');
+	$test = $_SESSION("IP");
 	echo($test);
 ?>
 
