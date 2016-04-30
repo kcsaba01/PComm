@@ -1,6 +1,5 @@
 <?php
-	session_start();
-	include("connection.php"); //Establishing connection with our database
+		include("connection.php"); //Establishing connection with our database
 	
 	$error = ""; //Variable for storing our errors.
 	if(isset($_POST["submit"]))
@@ -30,6 +29,7 @@
 
 					if(($result < 4) and ($result>0)) //checking whether the user exist and there were less than 4 login attempts
 					{
+						session_start();
 						$_SESSION['username'] = $username;// Initializing Session
 						$IP = getenv("REMOTE_ADDR");
 						$_SESSION['IP'] = $IP;
