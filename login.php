@@ -19,7 +19,7 @@
 			$password=mysqli_real_escape_string($db, $password);
 			$password = md5($password);
 
-			if ($stmt = mysqli_prepare($db,"SELECT attempt, userid FROM users WHERE username=? and password=?")) //Preparing the statement
+			if ($stmt = mysqli_prepare($db,"SELECT attempt, userID FROM users WHERE username=? and password=?")) //Preparing the statement
 			{
 				mysqli_stmt_bind_param($stmt, "ss", $username, $password); //Binding the variables
 				if (mysqli_stmt_execute($stmt))
@@ -30,7 +30,7 @@
 					if(($result['attempt'] < 4) and ($result['attempt']>0)) //checking whether the user exist and there were less than 4 login attempts
 					{
 						session_start();
-						$_SESSION['userid'] = $result['userid'];
+						$_SESSION['userID'] = $result['userID'];
 						$_SESSION['username'] = $username;// Initializing Session
 						$IP = getenv("REMOTE_ADDR");
 						$_SESSION['IP'] = $IP;
