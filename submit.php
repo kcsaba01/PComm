@@ -2,7 +2,7 @@
 $msg = "";
 include("connection.php");
 include("utilities.php");
-include("sessioncheck.php");
+//include("sessioncheck.php");
 if(isset($_POST["submit"]))
 {
 
