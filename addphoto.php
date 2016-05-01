@@ -93,9 +93,7 @@ if(isset($_POST["submit"]))
                     imagedestroy($img);
 
                     //removing EXIF data from BMP
-                    $img = imagecreatefromwbmp($target_file);
-                    imagewbmp($img,$target_file,null);
-                    imagedestroy($img);
+                    //bmp files do not have data that can be tempered with, therefore no need for exif removal
                 }
                 else
                 {
