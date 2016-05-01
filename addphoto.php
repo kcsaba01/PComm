@@ -30,8 +30,7 @@ if(isset($_POST["submit"]))
         'image/png',
         'image/jpeg',
         'image/gif',
-        'image/bmp',
-        'image/tiff');
+        'image/bmp');
 
     if (!in_array($file_type,$image_types)) //checking if a file is an image
     {
