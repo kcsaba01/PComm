@@ -68,8 +68,7 @@ if(isset($_POST["submit"]))
         $uploadOk = 0;
     }
 
-
-    if(($_SESSION['userid'] != "") and ($uploadOk != 0)) { //retrieving the user id from session and checking whether the file can be uploaded
+        if(($_SESSION['userid'] != "") and ($uploadOk != 0)) { //retrieving the user id from session and checking whether the file can be uploaded
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $id = $_SESSION['userid'];
             if ($stmt = mysqli_prepare($db,"INSERT INTO photos (title, description, postDate, url, userID) VALUES (?, ?, NOW(), ?, ?)")) //Preparing the statement
@@ -78,6 +77,9 @@ if(isset($_POST["submit"]))
                 if (mysqli_stmt_execute($stmt))
                 {
                     $msg="Thank You! The file ". $target_file. " has been uploaded";
+                    //removing EXIF data
+                    $img = imagecreatefromjpeg($target_file);
+                    imagejpeg($img,$target_file,100);
                 }
                 else
                 {
