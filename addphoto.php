@@ -47,7 +47,7 @@ if(isset($_POST["submit"]))
     }
 
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 100000)
+    if ($_FILES["fileToUpload"]["size"] > 1000000)
     {
         $msg = "Sorry, your file is too large ";
         $uploadOk = 0;
@@ -87,6 +87,10 @@ if(isset($_POST["submit"]))
                     imagegif($img,$target_file);
                     imagedestroy($img);
 
+                    //removing EXIF data fro PNG
+                    $img = imagecreatefrompng($target_file);
+                    imagepng($img,$target_file,100,null);
+                    imagedestroy($img);
                 }
                 else
                 {
