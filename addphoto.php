@@ -55,7 +55,7 @@ if(isset($_POST["submit"]))
 
     // Allow certain file formats
     $imageFileType = mb_strtolower($imageFileType);
-    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType= 'png' && $imageFileType = 'gif' && $imageFileType= 'bmp' && $imageFileType ='tiff' )
+    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType!= 'png' && $imageFileType != 'gif' && $imageFileType != 'bmp' && $imageFileType !='tiff' )
     {
         $msg = "Sorry, only files with jpg, jpeg, png, gif, bmp, tiff are allowed " . $imageFileType;
         $uploadOk = 0;
