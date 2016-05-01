@@ -77,9 +77,16 @@ if(isset($_POST["submit"]))
                 if (mysqli_stmt_execute($stmt))
                 {
                     $msg="Thank You! The file ". $target_file. " has been uploaded";
-                    //removing EXIF data
+                    //removing EXIF data for jpg
                     $img = imagecreatefromjpeg($target_file);
                     imagejpeg($img,$target_file,100);
+                    imagedestroy($img);
+
+                    //removing EXIF data fro GIF
+                    $img = imagecreatefromgif($target_file);
+                    imagegif($img,$target_file);
+                    imagedestroy($img);
+
                 }
                 else
                 {
