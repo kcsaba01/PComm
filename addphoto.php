@@ -55,9 +55,9 @@ if(isset($_POST["submit"]))
 
     // Allow certain file formats
     $imageFileType = mb_strtolower($imageFileType);
-    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType!= 'png' && $imageFileType != 'gif' && $imageFileType != 'bmp' && $imageFileType !='tiff' )
+    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType!= 'png' && $imageFileType != 'gif' && $imageFileType != 'bmp')
     {
-        $msg = "Sorry, only files with jpg, jpeg, png, gif, bmp, tiff are allowed ";
+        $msg = "Sorry, only files with jpg, jpeg, png, gif, bmp are allowed ";
         $uploadOk = 0;
     }
 
@@ -77,19 +77,24 @@ if(isset($_POST["submit"]))
                 if (mysqli_stmt_execute($stmt))
                 {
                     $msg="Thank You! The file ". $target_file. " has been uploaded";
-                    //removing EXIF data for jpg
+                    //removing EXIF data from jpg
                     $img = imagecreatefromjpeg($target_file);
                     imagejpeg($img,$target_file,100);
                     imagedestroy($img);
 
-                    //removing EXIF data fro GIF
+                    //removing EXIF data from GIF
                     $img = imagecreatefromgif($target_file);
                     imagegif($img,$target_file);
                     imagedestroy($img);
 
-                    //removing EXIF data fro PNG
+                    //removing EXIF data from PNG
                     $img = imagecreatefrompng($target_file);
                     imagepng($img,$target_file,100,null);
+                    imagedestroy($img);
+
+                    //removing EXIF data from BMP
+                    $img = imagecreatefromwbmp($target_file);
+                    imagewbmp($img,$target_file,null);
                     imagedestroy($img);
                 }
                 else
