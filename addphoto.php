@@ -24,9 +24,53 @@ if(isset($_POST["submit"]))
     $target_file = $target_dir . $targetfile;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     $uploadOk = 1;
-    
+    //check for file content
+    $file_type = mime_content_type($_FILES["fileToUpload"]["tmp_name"]);
+    $image_types = array(
 
-    if($_SESSION['userid'] != "") { //retrieving the user id from session
+        'image/png',
+        'image/jpeg',
+        'image/gif',
+        'image/bmp',
+        'image/tiff');
+
+    if (!in_array($file_type,$image_types)) //checking if a file is an image
+    {
+        $uploadOk = 0;
+        $msg = "File format not allowed!";
+    }
+
+    // Check if file already exists
+    if (file_exists($target_file))
+    {
+        $msg = "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
+    // Check file size
+
+    if ($_FILES["fileToUpload"]["size"] > 100000)
+    {
+        $msg = "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    $imageFileType = strlower($imageFileType);
+    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType= 'png' && $imageFileType='gif' && $imageFileType='bmp' && $imageFileType='tiff' )
+    {
+        $msg = "Sorry, only files with txt extension or no extension are allowed.";
+        $uploadOk = 0;
+    }
+
+    //Check how many dots are in the file name, protection against double extensions
+    if( substr_count($target_file, '.') > 1 )
+    {
+        $msg = "Sorry, no double extensions.";
+        $uploadOk = 0;
+    }
+
+
+    if(($_SESSION['userid'] != "") and ($uploadOk != 0)) { //retrieving the user id from session and checking whether the file can be uploaded
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $id = $_SESSION['userid'];
             if ($stmt = mysqli_prepare($db,"INSERT INTO photos (title, description, postDate, url, userID) VALUES (?, ?, NOW(), ?, ?)")) //Preparing the statement
@@ -45,9 +89,8 @@ if(isset($_POST["submit"]))
         }
     }
     else{
-        $msg = "You need to login first";
+        $msg = $msg . " or you are not logged in";
     }
-    mysqli_close($db); //closing the connection
 }
 
 ?>
