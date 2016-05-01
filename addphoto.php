@@ -27,7 +27,6 @@ if(isset($_POST["submit"]))
     //check for file content
     $file_type = mime_content_type($_FILES["fileToUpload"]["tmp_name"]);
     $image_types = array(
-
         'image/png',
         'image/jpeg',
         'image/gif',
@@ -46,8 +45,8 @@ if(isset($_POST["submit"]))
         $msg = "Sorry, file already exists.";
         $uploadOk = 0;
     }
-    // Check file size
 
+    // Check file size
     if ($_FILES["fileToUpload"]["size"] > 100000)
     {
         $msg = "Sorry, your file is too large.";
@@ -55,7 +54,7 @@ if(isset($_POST["submit"]))
     }
 
     // Allow certain file formats
-    $imageFileType = strlower($imageFileType);
+    $imageFileType = mb_strtolower($imageFileType);
     if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType= 'png' && $imageFileType='gif' && $imageFileType='bmp' && $imageFileType='tiff' )
     {
         $msg = "Sorry, only files with txt extension or no extension are allowed.";
