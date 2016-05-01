@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * page that allows adding a picture
+ */
 include("check.php");
 include("addphoto.php");
 include("sessioncheck.php");

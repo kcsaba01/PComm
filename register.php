@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * PHP page where a user can register
+ */
 	include("connection.php");
 	include("submit.php");
 	include("utilities.php");

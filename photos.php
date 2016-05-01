@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * PHP script that helps the display process in photo.php
+ */
 	include("check.php");
 	include("userphotos.php");
 	include("sessioncheck.php");

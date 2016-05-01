@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * PHP script used in the register.php page
+ */
 $msg = "";
 include("connection.php");
 include("utilities.php");

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * Index page, this is the main landing page when a user is accessing the page
+ */
 	include('login.php'); // Include Login Script
     include('utilities.php'); //Include utilities (xsssafe and xecho)
 

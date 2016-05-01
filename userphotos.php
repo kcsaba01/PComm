@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * PHP script to retrieve the pictures uploaded by a user. It is used in photo.php
+ */
 include("sessioncheck.php");
 include("utilities.php");
 $resultText = "";

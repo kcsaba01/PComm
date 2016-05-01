@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * Add comment form and page
+ */
 include("check.php");
 include("addcomment.php");
 include("sessioncheck.php");

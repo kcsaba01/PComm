@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * PHP script that logs a user off after 3 minutes innactivity
+ */
 //checking sesssion information
 session_start();
 $sessionIP = $_SESSION["IP"];

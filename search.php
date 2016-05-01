@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * PHP script to search for pictures, used in searchphotos.php
+ */
 include("sessioncheck.php");
 include("utilities.php");
 $resultText = "";

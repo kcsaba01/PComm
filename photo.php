@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * user is redirected to this page after login. The page displays the available pictures 
+ */
 	include("check.php");
     include("connection.php");
     include("sessioncheck.php");

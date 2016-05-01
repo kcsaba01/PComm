@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Csaba Keresztessy <0811994@rgu.ac.uk>
+ * Date: 01/05/2016
+ * PHP script to remove a picture
+ */
 include("connection.php"); //Establishing connection with our database
 include("sessioncheck.php");
 include("utilities.php");
