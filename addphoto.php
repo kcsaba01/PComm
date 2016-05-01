@@ -36,20 +36,20 @@ if(isset($_POST["submit"]))
     if (!in_array($file_type,$image_types)) //checking if a file is an image
     {
         $uploadOk = 0;
-        $msg = "File format not allowed!";
+        $msg = "Only image files are allowed ";
     }
 
     // Check if file already exists
     if (file_exists($target_file))
     {
-        $msg = "Sorry, file already exists.";
+        $msg = "Sorry, file already exists ";
         $uploadOk = 0;
     }
 
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > 100000)
     {
-        $msg = "Sorry, your file is too large.";
+        $msg = "Sorry, your file is too large ";
         $uploadOk = 0;
     }
 
@@ -57,14 +57,14 @@ if(isset($_POST["submit"]))
     $imageFileType = mb_strtolower($imageFileType);
     if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType= 'png' && $imageFileType='gif' && $imageFileType='bmp' && $imageFileType='tiff' )
     {
-        $msg = "Sorry, only files with txt extension or no extension are allowed.";
+        $msg = "Sorry, only files with jpg, jpeg, png, gif, bmp, tiff are allowed ";
         $uploadOk = 0;
     }
 
     //Check how many dots are in the file name, protection against double extensions
     if( substr_count($target_file, '.') > 1 )
     {
-        $msg = "Sorry, no double extensions.";
+        $msg = "Sorry, no double extensions ";
         $uploadOk = 0;
     }
 
@@ -81,7 +81,7 @@ if(isset($_POST["submit"]))
                 }
                 else
                 {
-                    $msg ="There was an error uploading your file."; //Displaying the reason why the adding has failed
+                    $msg ="There was an error uploading your file."; //there was an error in uploading
                 }
                 mysqli_stmt_close($stmt); //closing the statement
             }
